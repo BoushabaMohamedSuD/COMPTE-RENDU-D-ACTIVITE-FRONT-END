@@ -160,7 +160,7 @@ export default function NavBar(props) {
     );
 
     return (
-        <div className={classes.grow}>
+        <div className={classes.grow} style={{ marginBottom: 150 }}>
             <AppBar position="fixed">
                 <Toolbar>
                     <IconButton

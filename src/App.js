@@ -6,6 +6,7 @@ import { Switch, Route, Redirect, BrowserRouter } from 'react-router-dom';
 import SideBar from './layouts/SideBar';
 import NavBar from './layouts/NavBar';
 import SignIn from './layouts/SignIn';
+import CreateUser from './layouts/CreateUser';
 
 
 
@@ -80,11 +81,17 @@ class App extends React.Component {
             <Route path="/" exact render={(props) => <SignIn {...props}
 
             />} />
+            <Route path="/Auth" exact render={(props) => <SignIn {...props}
 
-
+            />} />
             <Route path="/Home" exact render={(props) => <Home {...props}
 
             />} />
+            <Route path="/CreateUser" exact render={(props) => <CreateUser {...props}
+
+            />} />
+
+
 
             <Redirect from="/" to="/" />
           </Switch>

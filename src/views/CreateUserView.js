@@ -34,7 +34,7 @@ function HomeIcon(props) {
 }
 
 
-class SignInView extends Component {
+class CreateUserView extends Component {
 
 
     render() {
@@ -115,4 +115,4 @@ class SignInView extends Component {
     }
 }
 
-export default SignInView;
+export default CreateUserView;
