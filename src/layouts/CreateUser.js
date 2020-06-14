@@ -5,6 +5,7 @@ import css from '../css/Globale.css'
 
 
 import SignInView from '../views/SignInView';
+import CreateUserView from '../views/CreateUserView';
 
 
 class CreateUser extends Component {
@@ -55,12 +56,12 @@ class CreateUser extends Component {
     render() {
         return (
             <div className={css.Authenticate}>
-                <SignInView
+                <CreateUserView
                     inputChange={this.inputChange}
                     submit={this.Submite}
                     forgetPassword={this.ForgetPassword}
                     switch={this.SwitchToSignUp}
-                ></SignInView>
+                ></CreateUserView>
             </div>
 
         );

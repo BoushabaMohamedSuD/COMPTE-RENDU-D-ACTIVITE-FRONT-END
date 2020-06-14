@@ -56,7 +56,7 @@ class CreateUserView extends Component {
             >
                 <Card className="Card" >
                     <CardHeader
-                        title="Sign in"
+                        title="Create User"
                     />
                     <CardContent>
                         <Grid
@@ -67,9 +67,27 @@ class CreateUserView extends Component {
                             spacing={0}
                         >
                             <InputSimple
-                                title="Username"
+                                title="Email"
+                                description="email"
+                                name="email"
+                                Change={this.props.inputChange}
+                            ></InputSimple>
+                            <InputSimple
+                                title="Bcode"
+                                description="bcode"
+                                name="bcode"
+                                Change={this.props.inputChange}
+                            ></InputSimple>
+                            <InputSimple
+                                title="FirstName"
                                 description="username"
-                                name="username"
+                                name="firstname"
+                                Change={this.props.inputChange}
+                            ></InputSimple>
+                            <InputSimple
+                                title="LastName"
+                                description="username"
+                                name="lastname"
                                 Change={this.props.inputChange}
                             ></InputSimple>
                             <InputPassword
@@ -97,15 +115,6 @@ class CreateUserView extends Component {
                         </Button>
 
                     </CardActions>
-
-                    <CardActions >
-                        <Link
-                            onClick={this.props.forgetPassword}
-                        >
-                            Forget password
-                         </Link>
-                    </CardActions>
-
 
                 </Card>
             </Grid >

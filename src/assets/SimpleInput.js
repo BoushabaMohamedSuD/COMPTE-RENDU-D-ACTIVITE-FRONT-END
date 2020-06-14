@@ -10,6 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Visibility from '@material-ui/icons/Visibility';
 import EmailIcon from '@material-ui/icons/Email';
 import PersonPinCircleIcon from '@material-ui/icons/PersonPinCircle';
+import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 
 
 const useStyles = makeStyles(theme => ({
@@ -41,6 +42,8 @@ export default function InputWithIcon(props) {
         icon = <EmailIcon />;
     } else if (props.description == "adress") {
         icon = <PersonPinCircleIcon />;
+    } else if (props.description == "bcode") {
+        icon = <BusinessCenterIcon />;
     }
 
     return (
