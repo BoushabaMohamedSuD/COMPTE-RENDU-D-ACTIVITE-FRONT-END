@@ -7,6 +7,7 @@ import SideBar from './layouts/SideBar';
 import NavBar from './layouts/NavBar';
 import SignIn from './layouts/SignIn';
 import CreateUser from './layouts/CreateUser';
+import ReportActivity from './layouts/ReportActivity';
 
 
 
@@ -88,6 +89,9 @@ class App extends React.Component {
 
             />} />
             <Route path="/CreateUser" exact render={(props) => <CreateUser {...props}
+
+            />} />
+            <Route path="/ReportActivity" exact render={(props) => <ReportActivity {...props}
 
             />} />
 

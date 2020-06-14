@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 
 
 import css from '../css/Globale.css'
+import ScrollableTabsButtonForce from '../assets/ScrollableTabsButtonForce';
+import DatePickers from '../assets/TimePickers';
+import SimplePaper from '../assets/Paper';
+import { Paper } from '@material-ui/core';
 
-import CreateUserView from '../views/CreateUserView';
 
 
-class CreateUser extends Component {
+
+
+class ReportActivity extends Component {
     userLogin = {
         username: "",
         password: "",
@@ -54,12 +59,43 @@ class CreateUser extends Component {
     render() {
         return (
             <div className={css.Authenticate}>
-                <CreateUserView
-                    inputChange={this.inputChange}
-                    submit={this.Submite}
-                    forgetPassword={this.ForgetPassword}
-                    switch={this.SwitchToSignUp}
-                ></CreateUserView>
+                Report your activity
+                <div style={{ height: 50 }}>
+
+                </div>
+
+
+                <div style={{
+                    width: "85%",
+                    margin: "0 auto",
+                }}>
+                    <Paper elevation={3}
+                        style={{
+                            paddingTop: 30
+                        }}
+                    >
+                        <div
+                            style={{
+                                marginBottom: 30,
+
+                            }}>
+                            <DatePickers>
+                            </DatePickers>
+                        </div>
+                        <div>
+
+                            <ScrollableTabsButtonForce>
+
+                            </ScrollableTabsButtonForce>
+
+                        </div>
+
+
+                    </Paper>
+
+
+                </div>
+
             </div>
 
         );
@@ -72,4 +108,4 @@ class CreateUser extends Component {
 
 
 
-export default CreateUser;
+export default ReportActivity;
