@@ -69,6 +69,31 @@ export default function ScrollableTabsButtonForce() {
         setValue(newValue);
     };
 
+    const presenceData = {
+        type: "presence",
+        columns: ["Mission", "Format", "Inter"],
+        data: [
+            {
+                Mission: 0,
+                Format: 1,
+                inter: 0
+            }
+        ]
+    }
+
+    const absenceData = {
+        type: "absence",
+        columns: ["C.P", "A.N.R", "A.M", "C.E", "D.I.V"],
+        data: [
+            {
+                cp: 0,
+                anr: 0,
+                am: 0,
+                ce: 1,
+                div: 0,
+            }
+        ]
+    }
     return (
         <div className={classes.root}>
             <AppBar position="static" color="default">
@@ -89,15 +114,19 @@ export default function ScrollableTabsButtonForce() {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-                <SimpleTable>
+                <CustomizedTables
+                    Data={presenceData}
+                >
 
-                </SimpleTable>
+                </CustomizedTables>
                 <Button>
                     add
                 </Button>
             </TabPanel>
             <TabPanel value={value} index={1}>
-                <CustomizedTables>
+                <CustomizedTables
+                    Data={absenceData}
+                >
 
                 </CustomizedTables>
                 <Button>
