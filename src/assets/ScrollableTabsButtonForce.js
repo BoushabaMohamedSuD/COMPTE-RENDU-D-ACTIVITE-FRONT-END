@@ -16,6 +16,9 @@ import Box from '@material-ui/core/Box';
 import WorkIcon from '@material-ui/icons/Work';
 import CommentIcon from '@material-ui/icons/Comment';
 import TimeToLeaveIcon from '@material-ui/icons/TimeToLeave';
+import SimpleTable from './Table1';
+import CustomizedTables from './Table2';
+import { Button } from '@material-ui/core';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -86,11 +89,21 @@ export default function ScrollableTabsButtonForce() {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-                Item One
-             </TabPanel>
+                <SimpleTable>
+
+                </SimpleTable>
+                <Button>
+                    add
+                </Button>
+            </TabPanel>
             <TabPanel value={value} index={1}>
-                Item Two
-             </TabPanel>
+                <CustomizedTables>
+
+                </CustomizedTables>
+                <Button>
+                    add
+                </Button>
+            </TabPanel>
             <TabPanel value={value} index={2}>
                 Item Three
             </TabPanel>
