@@ -19,6 +19,7 @@ import TimeToLeaveIcon from '@material-ui/icons/TimeToLeave';
 import SimpleTable from './Table1';
 import CustomizedTables from './Table2';
 import { Button } from '@material-ui/core';
+import ReportPresence from '../views/Dialogs/ReportPresence';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -65,24 +66,35 @@ export default function ScrollableTabsButtonForce() {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
+    const [presence, setPresence] = React.useState(false);
+    const [absence, setAbsence] = React.useState(false);
+    const [comment, setComment] = React.useState(false);
+
+
+
+
+
+
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
 
     const presenceData = {
         type: "presence",
+        key:true,
         columns: ["Mission", "Format", "Inter"],
         data: [
-            {
+            /*{
                 Mission: 0,
                 Format: 1,
                 inter: 0
-            }
+            }*/
         ]
     }
 
     const absenceData = {
         type: "absence",
+        key: false,
         columns: ["C.P", "A.N.R", "A.M", "C.E", "D.I.V"],
         data: [
             {
@@ -119,9 +131,18 @@ export default function ScrollableTabsButtonForce() {
                 >
 
                 </CustomizedTables>
-                <Button>
-                    add
-                </Button>
+                {
+                    presenceData.key?
+                        <Button
+                            onClick={() => {
+                                setPresence(true);
+                            }}>
+                            add
+                       </Button>
+                    :
+                    <></>
+                }
+              
             </TabPanel>
             <TabPanel value={value} index={1}>
                 <CustomizedTables
@@ -129,13 +150,35 @@ export default function ScrollableTabsButtonForce() {
                 >
 
                 </CustomizedTables>
-                <Button>
+                {
+                    absenceData.key?
+                      <Button
+                        onClick={() => {
+                        setAbsence(true);
+                       }}>
                     add
+                   
                 </Button>
+                    :
+                    <></>
+                }
+              
             </TabPanel>
             <TabPanel value={value} index={2}>
-                Item Three
+                <Button
+                    onClick={() => {
+                        setComment(true);
+                    }}>
+                    add
+                   
+                </Button>
             </TabPanel>
+            <ReportPresence
+                open={presence}
+                close={() => setPresence(false)}
+            >
+
+            </ReportPresence>
         </div>
     );
 }
