@@ -18,7 +18,7 @@ import CommentIcon from '@material-ui/icons/Comment';
 import TimeToLeaveIcon from '@material-ui/icons/TimeToLeave';
 import SimpleTable from './Table1';
 import CustomizedTables from './Table2';
-import { Button } from '@material-ui/core';
+import { Button, Icon } from '@material-ui/core';
 import ReportPresence from '../views/Dialogs/ReportPresence';
 
 function TabPanel(props) {
@@ -134,11 +134,20 @@ export default function ScrollableTabsButtonForce() {
                 {
                     presenceData.key?
                         <Button
+                            variant="contained" 
+                            color="primary"
+                           style={{
+                               marginTop:65
+                           }}
+                           
                             onClick={() => {
                                 setPresence(true);
-                            }}>
-                            add
+                            }}
+                        >
+                            Add
                        </Button>
+                       
+
                     :
                     <></>
                 }
@@ -152,13 +161,19 @@ export default function ScrollableTabsButtonForce() {
                 </CustomizedTables>
                 {
                     absenceData.key?
-                      <Button
-                        onClick={() => {
-                        setAbsence(true);
-                       }}>
-                    add
-                   
-                </Button>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            style={{
+                                marginTop: 65
+                            }}
+                            onClick={() => {
+                                setAbsence(true);
+                            }}
+                        >
+                            Add
+                       </Button>
+                    
                     :
                     <></>
                 }
@@ -166,6 +181,11 @@ export default function ScrollableTabsButtonForce() {
             </TabPanel>
             <TabPanel value={value} index={2}>
                 <Button
+                    variant="contained"
+                    color="primary"
+                    style={{
+                        marginTop: 65
+                    }}
                     onClick={() => {
                         setComment(true);
                     }}>
