@@ -7,20 +7,24 @@ import css from '../css/Globale.css'
 import SignInView from '../views/SignInView';
 
 
+import { connect } from 'react-redux'
+import * as actionCreators from '../store/actions/index';
+
+
 class SignIn extends Component {
     userLogin = {
-        username: "",
+        email: "",
         password: "",
     };
 
 
     inputChange = (event) => {
-        if (event.target.name == "username") {
-            this.userLogin.username = event.target.value;
+        if (event.target.name == "email") {
+            this.userLogin.email = event.target.value;
         } else if (event.target.name == "password") {
             this.userLogin.password = event.target.value;
         }
-        // console.log(this.userLogin);
+        //console.log(this.userLogin);
     };
 
 
@@ -45,13 +49,10 @@ class SignIn extends Component {
 
     ForgetPassword = () => {
         console.log("ForgetPassword");
-        this.props.history.push('/ForgetPassword');
+
     }
 
-    SwitchToSignUp = () => {
-        console.log("Switch to SignUp");
-        this.props.history.push('/signUp');
-    }
+
     render() {
         return (
             <div className={css.Authenticate}>
@@ -59,7 +60,6 @@ class SignIn extends Component {
                     inputChange={this.inputChange}
                     submit={this.Submite}
                     forgetPassword={this.ForgetPassword}
-                    switch={this.SwitchToSignUp}
                 ></SignInView>
             </div>
 
@@ -72,5 +72,28 @@ class SignIn extends Component {
 
 
 
+const mapStateToProps = state => {
+    //console.log(state.user);
+    return {
+        user: state.user,
+    };
+};
 
-export default SignIn;
+const mapDispatchToProps = dispatch => {
+    //console.log('set up dispatch');
+    return {
+        onSignIn: (data, props) => {
+            console.log('Sign In activited');
+            // console.log(username);
+            dispatch(actionCreators.SignIn(data, props));
+        }
+
+
+    };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+
+
+

@@ -67,9 +67,9 @@ class SignInView extends Component {
                             spacing={0}
                         >
                             <InputSimple
-                                title="Username"
-                                description="username"
-                                name="username"
+                                title="Email"
+                                description="email"
+                                name="email"
                                 Change={this.props.inputChange}
                             ></InputSimple>
                             <InputPassword

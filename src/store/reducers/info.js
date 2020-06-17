@@ -9,7 +9,25 @@ console.log("-------");*/
 
 if (initialUserState == undefined || initialUserState == null) {
     initialUserState = {
-        titleApp: "eBAR"
+        titleApp: "eBAR",
+        email: "",
+        firstname: "",
+        lastname: "",
+        bcode: "",
+        day: 0,
+        month: 0,
+        year: 0,
+        authoirty: "",
+        isactive: false,
+        target: {
+
+        },
+        activities: {
+            presences: [],
+            absences: [],
+            comments: []
+        },
+        token: ""
 
     };
 
@@ -23,6 +41,8 @@ const reducer = (state = initialUserState, action) => {
     switch (action.type) {
         case actionTypes.Test:
             return updateObject(state, { test: action.name });
+        case actionTypes.Update:
+            return updateObject(state, action.data);
 
 
 
