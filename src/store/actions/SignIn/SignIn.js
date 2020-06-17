@@ -36,6 +36,7 @@ export const SignIn = (data, props) => {
 
                 if (response.data != null) {
                     next(SignStateUpdate(response.data))
+                    props.history.push("/ReportActivity")
                 }
 
             })

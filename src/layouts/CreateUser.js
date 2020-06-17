@@ -6,20 +6,32 @@ import css from '../css/Globale.css'
 import CreateUserView from '../views/CreateUserView';
 
 
+import { connect } from 'react-redux'
+import * as actionCreators from '../store/actions/index';
+
 class CreateUser extends Component {
-    userLogin = {
-        username: "",
-        password: "",
+    targetData = {
+        email: "",
+        firstname: "",
+        lastname: "",
+        bcode: "",
+        password: ""
     };
 
 
     inputChange = (event) => {
-        if (event.target.name == "username") {
-            this.userLogin.username = event.target.value;
+        if (event.target.name == "email") {
+            this.targetData.email = event.target.value;
+        } else if (event.target.name == "firstname") {
+            this.targetData.firstname = event.target.value;
+        } else if (event.target.name == "lastname") {
+            this.targetData.lastname = event.target.value;
+        } else if (event.target.name == "bcode") {
+            this.targetData.bcode = event.target.value;
         } else if (event.target.name == "password") {
-            this.userLogin.password = event.target.value;
+            this.targetData.password = event.target.value;
         }
-        // console.log(this.userLogin);
+        //console.log(this.targetData);
     };
 
 
@@ -27,8 +39,8 @@ class CreateUser extends Component {
         console.log("submit the form");
         if (this.verification()) {
             console.log("----Submit valide-----");
-            console.log(this.userLogin);
-            this.props.onSignIn(this.userLogin, this.props);
+            console.log(this.targetData);
+            this.props.onCreateUser(this.targetData, this.props);
         } else {
             console.log("----Submit not valide----");
         }
@@ -36,8 +48,13 @@ class CreateUser extends Component {
     }
 
     verification = () => {
-        if (this.userLogin.username != "" && this.userLogin.password != "") {
-            return true;
+        if (this.targetData.email != "" && this.targetData.firstname != "") {
+            if (this.targetData.lastname != "" && this.targetData.bcode != "") {
+                if (this.targetData.password != "") {
+                    return true;
+                }
+
+            }
         }
         return false;
     }
@@ -71,5 +88,25 @@ class CreateUser extends Component {
 
 
 
+const mapStateToProps = state => {
+    //console.log(state.user);
+    return {
+        user: state.user,
+    };
+};
 
-export default CreateUser;
+const mapDispatchToProps = dispatch => {
+    //console.log('set up dispatch');
+    return {
+        onCreateUser: (data, props) => {
+            console.log('createUser activited');
+            // console.log(username);
+            dispatch(actionCreators.CreateUser(data, props));
+        }
+
+
+    };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateUser);
