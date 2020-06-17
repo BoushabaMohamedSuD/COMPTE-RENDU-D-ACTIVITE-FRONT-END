@@ -10,6 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 
 import TimePicker from 'react-time-picker';
+import Resume from '../assets/Resume';
 
 
 
@@ -145,9 +146,9 @@ class ReportActivity extends Component {
 
 
 
-                            <ScrollableTabsButtonForce>
+                            <Resume>
 
-                            </ScrollableTabsButtonForce>
+                            </Resume>
 
 
 
@@ -169,7 +170,7 @@ class ReportActivity extends Component {
                                     }
                                 }
                             >
-                                Your Manger
+                                My Manager
                             </Paper>
 
                         </div>

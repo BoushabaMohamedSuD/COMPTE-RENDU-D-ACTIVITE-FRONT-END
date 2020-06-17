@@ -10,7 +10,8 @@ import CreateUser from './layouts/CreateUser';
 import ReportActivity from './layouts/ReportActivity';
 
 
-
+import { connect } from 'react-redux'
+import * as actionCreators from './store/actions/index';
 
 
 class App extends React.Component {
@@ -20,6 +21,10 @@ class App extends React.Component {
     document.title = 'eRAB';
   }
 
+  componentDidMount() {
+    // Testing  redux
+    this.onTest();
+  }
   state = {
     toggleDrawer: false
   }
@@ -50,6 +55,12 @@ class App extends React.Component {
     let toggle = { ... this.state }
     toggle.toggleDrawer = false;
     this.setState(toggle);
+  }
+
+  onTest = () => {
+    console.log("on test");
+    this.props.onTest("test successed");
+
   }
 
 
@@ -111,5 +122,25 @@ class App extends React.Component {
 }
 
 
+const mapStateToProps = state => {
+  //console.log(state.user);
+  return {
+    user: state.user,
+  };
+};
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  //console.log('set up dispatch');
+  return {
+    onTest: (test) => {
+      console.log('test redux activited');
+      // console.log(username);
+      dispatch(actionCreators.Test(test));
+    }
+
+
+  };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

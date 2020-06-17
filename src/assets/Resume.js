@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function ScrollableTabsButtonForce() {
+export default function Resume() {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
@@ -79,23 +79,57 @@ export default function ScrollableTabsButtonForce() {
         setValue(newValue);
     };
 
+    const columns = ['Dates'];
+    let i = 1;
+    while (i < 32) {
+        columns.push(i);
+
+        i++;
+    }
+
+
     const presenceData = {
         type: "presence",
-        key:true,
-        columns: ["Mission", "Format", "Inter"],
+        key: true,
+        columns: columns,
+        titles: ['Mission', 'Format', 'Inter'],
         data: [
-            /*{
-                Mission: 0,
-                Format: 1,
-                inter: 0
-            }*/
+            //Mission
+            [[0, 1], [1, 5], [1, 12], [1, 6], [0, 23]],
+            //Fromat
+            [[1, 1], [0, 5], [0, 12], [0, 6], [1, 23]],
+            //inter
+            [[0, 1], [0, 5], [0, 12], [0, 6], [0, 23]],
+            /* {
+                 Mission: 0,
+                 Format: 1,
+                 inter: 0,
+                 date: 5
+             },
+             {
+                 Mission: 1,
+                 Format: 0,
+                 inter: 0,
+                 date: 1
+             },*/
         ]
     }
+    /*let i = 0;
+    while (i < 32) {
+        if(i==0){
+
+        }else{
+            columns.push(i);
+        }
+       
+
+        i++;
+    }*/
 
     const absenceData = {
         type: "absence",
-        key: true,
-        columns: ["C.P", "A.N.R", "A.M", "C.E", "D.I.V"],
+        key: false,
+        columns: columns,
         data: [
             {
                 cp: 0,
@@ -122,76 +156,25 @@ export default function ScrollableTabsButtonForce() {
                 >
                     <Tab label="Presence" icon={<WorkIcon />} {...a11yProps(0)} />
                     <Tab label="Absence" icon={<TimeToLeaveIcon />} {...a11yProps(1)} />
-                    <Tab label="Comment" icon={<CommentIcon />} {...a11yProps(2)} />
+
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-                <CustomizedTables
+                <SimpleTable
                     Data={presenceData}
                 >
 
-                </CustomizedTables>
-                {
-                    presenceData.key?
-                        <Button
-                            variant="contained" 
-                            color="primary"
-                           style={{
-                               marginTop:65
-                           }}
-                           
-                            onClick={() => {
-                                setPresence(true);
-                            }}
-                        >
-                            Add
-                       </Button>
-                       
+                </SimpleTable>
 
-                    :
-                    <></>
-                }
-              
             </TabPanel>
             <TabPanel value={value} index={1}>
-                <CustomizedTables
+                <SimpleTable
                     Data={absenceData}
                 >
 
-                </CustomizedTables>
-                {
-                    absenceData.key?
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            style={{
-                                marginTop: 65
-                            }}
-                            onClick={() => {
-                                setAbsence(true);
-                            }}
-                        >
-                            Add
-                       </Button>
-                    
-                    :
-                    <></>
-                }
-              
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    style={{
-                        marginTop: 65
-                    }}
-                    onClick={() => {
-                        setComment(true);
-                    }}>
-                    add
-                   
-                </Button>
+                </SimpleTable>
+
+
             </TabPanel>
             <ReportPresence
                 open={presence}

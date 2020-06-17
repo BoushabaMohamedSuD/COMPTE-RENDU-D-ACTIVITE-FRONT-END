@@ -26,31 +26,72 @@ const rows = [
     createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 
-export default function SimpleTable() {
+
+
+
+export default function SimpleTable(props) {
     const classes = useStyles();
+
+    const ListCells = (props, marker) => {
+        let Cells = []
+        console.log(marker)
+        console.log(props.Data.data)
+        props.Data.columns.map((column) => {
+            if (!isNaN(column)) {
+
+                let key = true
+                let i = 0;
+                let limit = props.Data.columns.length - 1;
+                while (i < limit) {
+                    if (props.Data.data[marker][i] != undefined) {
+                        if (props.Data.data[marker][i][1] == column) {
+                            Cells.push(<TableCell>{props.Data.data[marker][i][0]}</TableCell>)
+                            key = false;
+                            break;
+                        }
+                    }
+
+                    i++;
+                }
+
+
+                if (key) {
+                    Cells.push(<TableCell>-</TableCell>)
+                }
+
+
+
+            }
+
+
+        })
+        console.log(Cells)
+        return Cells;
+    }
+
 
     return (
         <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Dessert (100g serving)</TableCell>
-                        <TableCell align="right">Calories</TableCell>
-                        <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                        <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                        <TableCell align="right">Protein&nbsp;(g)</TableCell>
+                        {props.Data.columns.map((column) => (
+                            <TableCell>{column}</TableCell>
+                        ))}
+
+
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row) => (
-                        <TableRow key={row.name}>
+                    {props.Data.titles.map((title, marker) => (
+                        <TableRow key={title}>
                             <TableCell component="th" scope="row">
-                                {row.name}
+                                {title}
                             </TableCell>
-                            <TableCell align="right">{row.calories}</TableCell>
-                            <TableCell align="right">{row.fat}</TableCell>
-                            <TableCell align="right">{row.carbs}</TableCell>
-                            <TableCell align="right">{row.protein}</TableCell>
+                            {ListCells(props, marker).map((cells) => (
+                                cells
+                            ))}
+
                         </TableRow>
                     ))}
                 </TableBody>
@@ -58,3 +99,6 @@ export default function SimpleTable() {
         </TableContainer>
     );
 }
+
+
+//  return (<TableCell>{column}</TableCell>)
